@@ -5,8 +5,8 @@ date: "6/13/2018"
 output: html_document
 ---
 
-
-```{r setup, include=FALSE}
+### This is the setup portion to load all the packages we need for our analysis
+```{r setup, echo=TRUE}
 ## install packages if necessary
 list.of.packages <- c("httr", "readxl", "dplyr", "tidyr", "stringr", "reshape2", "skimr", "ggplot2")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -97,10 +97,14 @@ df_department <- df1 %>%
   select(business, year, n)
 ```
 
+### Joining the two datasets into one
+
 ```{r merge-data, warning=FALSE} 
 ## Now, combine the two data frames
-df_total <- function_name()
+df_total <- left_join(df_retail, df_department)
 ```
+
+### Creating our visualizations
 
 ```{r plot, warning=FALSE, fig.width=10} 
 ## Plot Retail Sales data
